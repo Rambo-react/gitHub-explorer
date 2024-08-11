@@ -4,10 +4,14 @@ import './index.css'
 import { CssBaseline } from '@mui/material'
 import { Provider } from 'react-redux'
 import store from './redux/store.ts'
+import { ApolloProvider } from '@apollo/client'
+import client from './apollo/client.ts'
 
 createRoot(document.getElementById('root')!).render(
   <Provider store={store}>
-    <CssBaseline />
-    <App />
+    <ApolloProvider client={client}>
+      <CssBaseline />
+      <App />
+    </ApolloProvider>
   </Provider>
 )
