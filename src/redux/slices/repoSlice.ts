@@ -11,7 +11,7 @@ interface RepoState {
 const initialState: RepoState = {
   searchTerm: '',
   orderBy: {
-    field: 'STARS',
+    field: 'Название',
     direction: 'DESC',
   },
 }

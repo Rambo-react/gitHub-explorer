@@ -1,5 +1,6 @@
 import { Box, Container } from '@mui/material'
 import { SearchBar } from './components/SearchBar/SearchBar'
+import { RepoTable } from './components/RepoTable/RepoTable'
 
 function App() {
   return (
@@ -8,6 +9,9 @@ function App() {
         <Container maxWidth='lg'>
           <SearchBar />
         </Container>
+      </Box>
+      <Box>
+        <RepoTable />
       </Box>
     </>
   )
