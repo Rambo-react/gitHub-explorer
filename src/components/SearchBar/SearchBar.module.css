@@ -1,0 +1,19 @@
+.center {
+  display: flex;
+  align-items: center;
+}
+.input {
+  width: 100%;
+  background-color: white;
+  border-radius: 4px;
+  font-size: 24px;
+  font-weight: 500;
+  max-width: 912px;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 19px 0;
+}

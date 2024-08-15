@@ -1,8 +1,21 @@
 import { gql } from '@apollo/client'
 
 export const GET_REPOSITORIES = gql`
-  query SearchRepos($query: String!, $first: Int!) {
-    search(query: $query, type: REPOSITORY, first: $first) {
+  query SearchRepos(
+    $query: String!
+    $first: Int
+    $after: String
+    $last: Int
+    $before: String
+  ) {
+    search(
+      query: $query
+      type: REPOSITORY
+      first: $first
+      after: $after
+      last: $last
+      before: $before
+    ) {
       edges {
         node {
           ... on Repository {
@@ -10,10 +23,8 @@ export const GET_REPOSITORIES = gql`
             name
             description
             languages(first: 5) {
-              edges {
-                node {
-                  name
-                }
+              nodes {
+                name
               }
             }
             primaryLanguage {
@@ -29,9 +40,12 @@ export const GET_REPOSITORIES = gql`
         }
       }
       pageInfo {
+        startCursor
         endCursor
         hasNextPage
+        hasPreviousPage
       }
+      repositoryCount
     }
   }
 `

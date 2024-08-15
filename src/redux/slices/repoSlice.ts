@@ -1,19 +1,14 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
+import { Repository } from './types'
 
 interface RepoState {
   searchTerm: string
-  orderBy: {
-    field: string
-    direction: 'ASC' | 'DESC'
-  }
+  selectedRepo: Repository | null
 }
 
 const initialState: RepoState = {
   searchTerm: '',
-  orderBy: {
-    field: 'Название',
-    direction: 'DESC',
-  },
+  selectedRepo: null,
 }
 
 const repoSlice = createSlice({
@@ -23,14 +18,11 @@ const repoSlice = createSlice({
     setSearchTerm(state, action: PayloadAction<string>) {
       state.searchTerm = action.payload
     },
-    setOrderBy(
-      state,
-      action: PayloadAction<{ field: string; direction: 'ASC' | 'DESC' }>
-    ) {
-      state.orderBy = action.payload
+    setSelectedRepo(state, action: PayloadAction<Repository | null>) {
+      state.selectedRepo = action.payload
     },
   },
 })
 
-export const { setSearchTerm, setOrderBy } = repoSlice.actions
+export const { setSearchTerm, setSelectedRepo } = repoSlice.actions
 export default repoSlice.reducer

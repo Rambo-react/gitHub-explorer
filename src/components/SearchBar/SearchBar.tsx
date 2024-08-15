@@ -1,9 +1,10 @@
 import { Box, Button, TextField } from '@mui/material'
-import React, { useState } from 'react'
+import React, { memo, useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { setSearchTerm } from '../../redux/slices/repoSlice'
+import styles from './SearchBar.module.css'
 
-export const SearchBar: React.FC = () => {
+export const SearchBar: React.FC = memo(() => {
   const [localSearchTerm, setLocalSearchTerm] = useState('')
   const dispatch = useDispatch()
 
@@ -13,30 +14,20 @@ export const SearchBar: React.FC = () => {
   }
 
   return (
-    <Box
-      component='form'
-      onSubmit={handleSearch}
-      sx={{
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'space-between',
-      }}
-    >
+    <Box component='form' onSubmit={handleSearch} className={styles.container}>
       <TextField
-        sx={{
-          flex: 1,
-          marginRight: 2,
-          backgroundColor: 'white',
-          borderRadius: '4px',
-        }}
+        className={styles.input}
         placeholder='Введите поисковый запрос'
         variant='outlined'
+        size='small'
         value={localSearchTerm}
         onChange={(e) => setLocalSearchTerm(e.target.value)}
       />
-      <Button type='submit' variant='contained' color='primary'>
+      <Button type='submit' variant='contained' color='primary' size='large'>
         Искать
       </Button>
     </Box>
   )
-}
+})
+
+SearchBar.displayName = 'SearchBar'
